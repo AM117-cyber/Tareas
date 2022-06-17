@@ -1,7 +1,7 @@
 ﻿Console.WriteLine("Ingrese el numero de caramelos por caja con un espacio entre las cantidades.");
 //DUDA: Cuando pongo 12 4 5 me da error.
-string candies =  Console.ReadLine();
-string[] numbers = candies.Split(" ");
+string candies =  Console.ReadLine().Trim();
+string[] numbers = candies.Split(" ", System.StringSplitOptions.RemoveEmptyEntries);
 int[] candiesForMethod = new int[numbers.Length];
 for (int i = 0; i < numbers.Length; i++)
 {
