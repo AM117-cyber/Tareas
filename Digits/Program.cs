@@ -11,7 +11,7 @@ static double Numberofdigits(double number){
     for (int i = 0; i < int.MaxValue; i++)
     {
         double divisor = Math.Pow(10,i);
-        if (number-(number%divisor)==0)
+        if (number<divisor)
         {
             digits = i;
             break;
