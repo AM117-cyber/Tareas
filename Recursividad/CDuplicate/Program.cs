@@ -25,6 +25,8 @@ static bool CheckD(int[] nums, int i, int j)
     return CheckD(nums, i, j + 1);
 }
 
+
+//ANAGRAMA
 string s = "ddshmygardenisfullofblueliliesandnotoadsaretobeseenasfarasmeetstheeyehaad";
 string t = "mygardenisfullofblueliliesandsdhdnotoadsaretobeseenasfarasmeetstheeyeahad";
 
@@ -55,7 +57,7 @@ static bool A(string s, string t)
     return A(s, t);
 }
 
-
+//TWOSUM
 static int[] TwoSum(int[] nums, int target)
 {
     return GetSum(nums, target, 0, 1);
