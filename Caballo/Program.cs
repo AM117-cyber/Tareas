@@ -1,20 +1,20 @@
 ﻿static bool HayRecorrido(int n)
 {
     int[,] board = new int[n, n];
-    board[0, 0] = -1;
-    return HayRecorrido1(board, 0, 0, 1);
+    board[0, 0] = 1;
+    return HayRecorrido1(board, 0, 0, 2);
 }
 System.Console.WriteLine(HayRecorrido(8));
 static bool HayRecorrido1(int[,] board, int row, int column, int step)
 {
     int[] vColumn = { 1, -1, 1, -1, 2, 2, -2, -2 };
     int[] vRow = { -2, -2, 2, 2, -1, 1, -1, 1 };
-    if (step > board.Length - 1)
+    if (step > board.Length)
     {
         return true;
     }
         
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < vColumn.Length; i++)
     {
 
         if (IsValid(board, (row + vRow[i], column + vColumn[i])))
@@ -37,7 +37,7 @@ static bool HayRecorrido1(int[,] board, int row, int column, int step)
 
 static bool IsValid(int[,] board, (int row, int column) pos3)
 {
-    if ((pos3.row | pos3.column) < 0 | (pos3.row | pos3.column) >= board.GetLength(0))
+    if (pos3.row < 0 || pos3.column < 0 || pos3.row >= board.GetLength(0) || pos3.column >= board.GetLength(0))
     {
         return false;
     }
