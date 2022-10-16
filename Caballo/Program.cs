@@ -1,30 +1,33 @@
 ﻿static bool HayRecorrido(int n)
 {
-    int[,] tablero = new int[n, n];
-    tablero[0, 0] = -1;
-    return HayRecorrido1(tablero, 0, 0, 1);
+    int[,] board = new int[n, n];
+    board[0, 0] = -1;
+    return HayRecorrido1(board, 0, 0, 1);
 }
 System.Console.WriteLine(HayRecorrido(8));
-static bool HayRecorrido1(int[,] tablero, int row, int column, int step)
+static bool HayRecorrido1(int[,] board, int row, int column, int step)
 {
     int[] vColumn = { 1, -1, 1, -1, 2, 2, -2, -2 };
     int[] vRow = { -2, -2, 2, 2, -1, 1, -1, 1 };
-    if (step > tablero.Length - 1)
+    if (step > board.Length - 1)
     {
         return true;
     }
-
+        
     for (int i = 0; i < 8; i++)
     {
 
-        if (IsValid(tablero, (row + vRow[i], column + vColumn[i])))
+        if (IsValid(board, (row + vRow[i], column + vColumn[i])))
         {
             //llenando tablero
-            tablero[row + vRow[i], column + vColumn[i]] = step;
+            board[row + vRow[i], column + vColumn[i]] = step;
             // pasos dados
-            if (!HayRecorrido1(tablero, row + vRow[i], column + vColumn[i], step+1))
+            if (!HayRecorrido1(board, row + vRow[i], column + vColumn[i], step+1))
             {
-                tablero[row + vRow[i], column + vColumn[i]] = 0;
+                board[row + vRow[i], column + vColumn[i]] = 0;
+            }else
+            {
+                return true;
             }
 
         }
@@ -32,13 +35,13 @@ static bool HayRecorrido1(int[,] tablero, int row, int column, int step)
     return false;
 }
 
-static bool IsValid(int[,] tablero, (int row, int column) pos3)
+static bool IsValid(int[,] board, (int row, int column) pos3)
 {
-    if ((pos3.row | pos3.column) < 0 | (pos3.row | pos3.column) >= tablero.GetLength(0))
+    if ((pos3.row | pos3.column) < 0 | (pos3.row | pos3.column) >= board.GetLength(0))
     {
         return false;
     }
-    if (tablero[pos3.row, pos3.column] != 0)
+    if (board[pos3.row, pos3.column] != 0)
     {
         return false;
     }
