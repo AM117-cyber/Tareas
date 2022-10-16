@@ -13,7 +13,7 @@ static (bool b, int insertions) IsPalyndrome(string word,int pos1, int pos2,bool
     if (word[pos1] != word[pos2])
     {
         b = false;
-        insertions++; 
+        insertions = insertions+2; 
     }
     
     return IsPalyndrome(word, pos1+1,pos2-1,b,insertions);
